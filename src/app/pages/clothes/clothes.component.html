@@ -1,0 +1,25 @@
+<!--
+  This example requires Tailwind CSS v2.0+
+
+  This example requires some changes to your config:
+
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/aspect-ratio'),
+    ],
+  }
+  ```
+-->
+<div>
+  <div class=" max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Customers also purchased</h2>
+
+    <div class="w-fit lg:justify-center grid lg:grid-cols-3 sm:grid-cols-1 w-screen justify-center mt-6 gap-y-10 gap-x-24 ">
+          <app-item-card *ngFor="let item of items" (toCart)="addToCart(item)" [item]="item"></app-item-card>
+    </div>
+  </div>
+</div>

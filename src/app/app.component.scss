@@ -1,0 +1,22 @@
+a {
+  text-decoration: none;
+  color: #fff;
+}
+a:hover, a:active {
+  color:lightcyan;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+app-header > mat-icon {
+  padding-right: 5rem;
+}
