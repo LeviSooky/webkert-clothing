@@ -1,0 +1,14 @@
+.my-form-field .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
+}
+input {
+  @apply text-black bg-amber-50
+}
+mat-label {
+
+  color: violet;
+
+}
+mat-input-element {
+  font-size: 28px;
+}

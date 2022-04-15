@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Item} from "../../../common/model/item";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-item-card',
@@ -25,6 +26,5 @@ export class ItemCardComponent implements OnInit {
   }
 
   openDetails() {
-    throw new Error("not implemented!");
   }
 }

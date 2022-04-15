@@ -9,16 +9,16 @@
             <p class="my-8">
               <span class="font-medium dark:text-coolGray-50">Lorem ipsum.</span>dolor sit amet, consectetur adipiscing elit. Nam faucibus porta dignissim. Mauris mattis tincidunt.
             </p>
-            <form novalidate="" action="" class="self-stretch space-y-3 ng-untouched ng-pristine ng-valid">
-              <div class="mb-3">
-                <label for="lastname" class="text-sm sr-only">Name</label>
-                <input id="lastname" type="text" placeholder="Name" class="h-10 w-full rounded-md focus:ring focus:ring-violet-400 dark:border-coolGray-700">
-              </div>
-              <div class="mb-3">
-                <label for="email" class="text-sm sr-only">Email address</label>
-                <input id="email" type="text" placeholder="Email address" class="h-10 w-full rounded-md focus:ring focus:ring-violet-400 dark:border-coolGray-700">
-              </div>
-              <button class="w-full py-2 font-semibold rounded dark:bg-violet-400 dark:text-coolGray-900">Feliratkozom</button>
+            <form novalidate="" action="" class="grid grid-col-1 gap-y-1 self-stretch space-y-3 ng-untouched ng-pristine ng-valid">
+              <mat-form-field class="mb-3">
+                <mat-label for="lastname" >Name</mat-label>
+                <input matInput id="lastname" [formControl]="name" type="text" placeholder="Name" class="text-black h-10 w-full rounded-md focus:ring focus:ring-violet-400 dark:border-coolGray-700">
+              </mat-form-field>
+              <mat-form-field class="mb-3">
+                <mat-label for="email">Email address</mat-label>
+                <input matInput id="email" [formControl]="email" type="text" placeholder="Email address" class="text-black h-10 w-full rounded-md focus:ring focus:ring-violet-400 dark:border-coolGray-700">
+              </mat-form-field>
+              <button type="button"  (click)="subscribeNewsletter()" class="w-full py-2 font-semibold rounded dark:bg-violet-400 dark:text-coolGray-900">Feliratkozom</button>
             </form>
           </div>
           <img src="https://images.pexels.com/photos/1670770/pexels-photo-1670770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" class="object-cover w-full h-full rounded-md xl:col-span-3 dark:bg-coolGray-500">

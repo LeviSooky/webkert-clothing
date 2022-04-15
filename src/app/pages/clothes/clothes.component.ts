@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
 import {Item} from "../../common/model/item";
 import {ItemCategory} from "../../common/model/item-category";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-clothes',
@@ -12,7 +13,7 @@ export class ClothesComponent implements OnInit {
 
   toCart: EventEmitter<Item> = new EventEmitter<Item>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.items.push(new class implements Item {
@@ -45,5 +46,13 @@ export class ClothesComponent implements OnInit {
 
   addToCart(item: Item) {
     this.toCart.emit(item);
+  }
+
+  openDetails(item: Item, event: Event) {
+    event.preventDefault();
+    if((event.target as HTMLInputElement).nodeName === 'A') {
+      return;
+    }
+    this.router.navigate(["/clothes", item.id, item]);
   }
 }

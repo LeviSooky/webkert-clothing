@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Item} from "../../common/model/item";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +14,16 @@ export class CartComponent implements OnInit {
   itemDelete: EventEmitter<Item> = new EventEmitter<Item>();
   @Output()
   itemAdd: EventEmitter<Item> = new EventEmitter<Item>();
+  cartFormGroup: FormGroup = new FormGroup( {
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+    address: new FormControl(''),
+    city: new FormControl(''),
+    state: new FormControl(''),
+    zipCode: new FormControl('')
+  });
+
 
   constructor() { }
 
