@@ -12,3 +12,7 @@ mat-label {
 mat-input-element {
   font-size: 28px;
 }
+
+input {
+  @apply h-8
+}

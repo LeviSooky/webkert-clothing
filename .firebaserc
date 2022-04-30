@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webkert-clothing": {
+      "hosting": {
+        "webkert-shop": [
+          "webkert-clothing"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webkert-clothing"
+  }
+}

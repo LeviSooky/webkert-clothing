@@ -16,19 +16,19 @@
     <button type="button" class="px-6 py-2 border rounded-md dark:border-violet-400" routerLink="/clothes">Back
       <span class="sr-only sm:not-sr-only">to shop</span>
     </button>
-    <button type="button" class="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-coolGray-900 dark:border-violet-400">
-      <span class="sr-only sm:not-sr-only">Continue to</span>Checkout
+    <button type="button" (click)="checkout()" class="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-coolGray-900 dark:border-violet-400">
+      <span class="sr-only sm:not-sr-only"></span>Checkout
     </button>
   </div>
 </div>
-  <section class="p-6 dark:bg-coolGray-800 dark:text-coolGray-50  lg:relative lg:top-[25%]">
+  <section class="p-6 dark:bg-coolGray-800 dark:text-coolGray-50  lg:relative top-auto">
     <form [formGroup]="cartFormGroup" novalidate="" action="" class="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
       <fieldset class="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-coolGray-900">
         <div class="space-y-2 col-span-full lg:col-span-1">
           <p class="font-medium">Personal Inormation</p>
           <p class="text-xs">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci fuga autem eum!</p>
         </div>
-        <div class="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+        <div class="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 ">
           <mat-form-field class="my-form-field col-span-full sm:col-span-3">
             <mat-label for="firstname" class="text-sm">First name</mat-label>
             <input matInput id="firstname" formControlName="firstName" type="text" placeholder="First name" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-coolGray-700 dark:text-coolGray-900">
@@ -45,7 +45,7 @@
             <mat-label for="address" class="text-sm">Address</mat-label>
             <input matInput id="address" formControlName="address" type="text" placeholder="" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-coolGray-700 dark:text-coolGray-900">
           </mat-form-field>
-          <mat-form-field class="my-form-field col-span-full sm:col-span-2">
+          <mat-form-field class="my-form-field col-span-full sm:col-span-2" >
             <mat-label for="city" class="text-sm">City</mat-label>
             <input matInput id="city" formControlName="city" type="text" placeholder="" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-coolGray-700 dark:text-coolGray-900">
           </mat-form-field>

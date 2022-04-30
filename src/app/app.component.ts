@@ -5,6 +5,7 @@ import {ClothesComponent} from "./pages/clothes/clothes.component";
 import {Subscription} from "rxjs";
 import {CartComponent} from "./pages/cart/cart.component";
 import {MatSidenav} from "@angular/material/sidenav";
+import { initializeApp } from "firebase/app";
 
 @Component({
   selector: 'app-root',

@@ -14,6 +14,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatListModule} from "@angular/material/list";
 import {MatBadgeModule} from "@angular/material/badge";
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import {AngularFireModule} from "@angular/fire/compat";
+import {getStorage, provideStorage} from "@angular/fire/storage";
 
 @NgModule({
   declarations: [
@@ -32,7 +37,11 @@ import {MatBadgeModule} from "@angular/material/badge";
     MatIconModule,
     FlexLayoutModule,
     MatListModule,
-    MatBadgeModule
+    MatBadgeModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,29 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {Item} from "../../../common/model/item";
-import {ActivatedRoute} from "@angular/router";
-import {ItemCategory} from "../../../common/model/item-category";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ItemService} from "../../../services/item.service";
+import {Subscription} from "rxjs";
+import {SubscriptionsContainer} from "../../../common/SubscriptionsContainer";
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit, OnDestroy {
 
+  subsContainer: SubscriptionsContainer = new SubscriptionsContainer();
   item!: Item;
-  constructor(private activatedRoute: ActivatedRoute) { }
+  @Output()
+  toCart: EventEmitter<Item> = new EventEmitter<Item>();
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private itemService: ItemService) { }
 
   ngOnInit(): void {
-    let id = this.activatedRoute.snapshot.paramMap.get("id");
-    //todo service call
-    // this.item = new class implements Item {
-    //   category: ItemCategory = ItemCategory.TShirt;
-    //   description: string = "egy";
-    //   id: number = 1;
-    //   name: string = "name";
-    //   pictureUrl: string = "https://img1.g-star.com/product/c_fill,f_auto,h_630,q_80/v1614686111/D14143-336-6484-M05/g-star-raw-raw-graphic-slim-t-shirt-black.jpg";
-    //   price: number = 400;
-    // };
+    let id = Number.parseInt(this.activatedRoute.snapshot.paramMap.get("id")!);
+    this.subsContainer.add = this.itemService.getItemById(id).subscribe((item) => { //todo handle subs
+      this.item = item[0];
+    });
+  }
+  closeDetails(): void {
+    this.router.navigate(["clothes"]);
   }
 
+  ngOnDestroy(): void {
+    this.subsContainer.dispose();
+  }
+
+  addToCart($event: MouseEvent) {
+    this.toCart.emit(this.item);
+  }
 }

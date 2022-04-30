@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "webkert-shop:build:production",
+            "firebaseProject": "webkert-clothing",
+            "firebaseHostingSite": "webkert-clothing"
+          }
         }
       }
     }
