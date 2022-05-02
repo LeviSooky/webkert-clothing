@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from "@angular/fire/compat";
 import {getStorage, provideStorage} from "@angular/fire/storage";
+import { ForintPipe } from './common/pipes/forint-pipe.pipe';
 
 @NgModule({
   declarations: [

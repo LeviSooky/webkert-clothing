@@ -6,6 +6,7 @@ import {Subscription} from "rxjs";
 import {CartComponent} from "./pages/cart/cart.component";
 import {MatSidenav} from "@angular/material/sidenav";
 import { initializeApp } from "firebase/app";
+import {DetailsComponent} from "./pages/clothes/details/details.component";
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,7 @@ export class AppComponent implements OnChanges{
   subscribeToEmitter(componentRef: any) {
     if(componentRef instanceof CartComponent) {
       this.subscriptions.push(componentRef.itemAdd.subscribe((item: Item) => this.addToCart(item)));
+      this.subscriptions.push(componentRef.deleteAll.subscribe(() => this.cart.clear()));
       componentRef.items = this.cart;
       this.subscriptions.push(componentRef.itemDelete.subscribe((item) => {
         if(this.cart.get(item) === 1) {
@@ -38,6 +40,9 @@ export class AppComponent implements OnChanges{
           this.cart.set(item, this.cart.get(item) as number - 1);
         }
       }));
+    }
+    if(componentRef instanceof DetailsComponent) {
+      this.subscriptions.push(componentRef.toCart.subscribe((item: Item) => this.addToCart(item)))
     }
     if(!(componentRef instanceof ClothesComponent)){
       return;

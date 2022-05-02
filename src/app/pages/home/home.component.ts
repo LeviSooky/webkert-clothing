@@ -35,6 +35,11 @@ export class HomeComponent implements OnInit {
       this.openDialog();
       this.name.setValue("");
       this.email.setValue("");
+      let emailSubscription = {
+        name: this.name.value,
+        email: this.email.value
+      };
+
     }
   }
 }

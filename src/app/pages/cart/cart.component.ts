@@ -1,10 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Item} from "../../common/model/item";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Order} from "../../common/model/order";
 import {CartService} from "../../services/cart.service";
 import {ItemIdQuantityPair} from "../../common/model/item-id-quantity-pair";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-cart',
@@ -17,19 +18,34 @@ export class CartComponent implements OnInit {
   @Output()
   itemDelete: EventEmitter<Item> = new EventEmitter<Item>();
   @Output()
+  deleteAll: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
   itemAdd: EventEmitter<Item> = new EventEmitter<Item>();
   cartFormGroup: FormGroup = new FormGroup( {
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    address: new FormControl(''),
-    city: new FormControl(''),
-    state: new FormControl(''),
-    zipCode: new FormControl('')
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    address: new FormControl('',Validators.required),
+    city: new FormControl('', Validators.required),
+    state: new FormControl('', Validators.required),
+    zipCode: new FormControl('', Validators.required)
   });
+  durationInSeconds = 5;
 
 
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(private router: Router, private cartService: CartService, private _snackBar: MatSnackBar) { }
+
+
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "ok",{
+        horizontalPosition: "center",
+        verticalPosition: "top"
+
+      }
+    );
+  }
+
 
   ngOnInit(): void {
     if(this.items.size === 0) {
@@ -58,10 +74,14 @@ export class CartComponent implements OnInit {
         items: this.convertToSavable()
       };
       this.cartService.saveOrder(order).then(r => {
-       console.log("SUCCCESSSS");
+       this.openSnackBar("Sikeres rendelés!");
+       this.deleteAll.emit();
+       this.router.navigate(["/"]);
+      },() => {
+        this.openSnackBar("Something went wrong...");
       });
-    console.log(order);
     }
+    this.openSnackBar("Adjon meg helyes adatokat!");
   }
 
   private convertToSavable(): ItemIdQuantityPair[] {

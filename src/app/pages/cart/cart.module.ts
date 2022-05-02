@@ -8,6 +8,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {AppModule} from "../../app.module";
+import {ApplicationPipesModule} from "../../common/modules/application-pipes/application-pipes.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -21,7 +24,9 @@ import {MatInputModule} from "@angular/material/input";
         MatIconModule,
         MatFormFieldModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        ApplicationPipesModule,
+        MatSnackBarModule
     ]
 })
 export class CartModule { }

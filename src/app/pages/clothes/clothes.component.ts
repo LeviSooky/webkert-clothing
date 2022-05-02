@@ -3,6 +3,7 @@ import {Item} from "../../common/model/item";
 import {Router} from "@angular/router";
 import {ItemService} from "../../services/item.service";
 import {SubscriptionsContainer} from "../../common/SubscriptionsContainer";
+import {ForintPipe} from "../../common/pipes/forint-pipe.pipe";
 
 @Component({
   selector: 'app-clothes',
