@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Item} from "../../../common/model/item";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart-item',
@@ -18,7 +19,7 @@ export class CartItemComponent implements OnInit {
   itemToAdd: EventEmitter<Item> = new EventEmitter<Item>();
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -29,5 +30,9 @@ export class CartItemComponent implements OnInit {
 
   addItem(item: Item) {
     this.itemToAdd.emit(item);
+  }
+
+  openDetails(id: number) {
+    this.router.navigate([`clothes/${id}`]);
   }
 }
