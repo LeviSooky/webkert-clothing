@@ -18,7 +18,7 @@
   <div class=" max-w-2xl lg:ml-16 sm:ml-0 mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
     <h2 class="text-4xl font-extrabold tracking-tight text-amber-50">Customers also purchased</h2>
 
-    <div class="card-container overflow-hidden w-[94vw] lg:justify-center grid lg:grid-cols-3 sm:grid-cols-1 w-screen justify-center mt-6 gap-y-10 gap-x-24 ">
+    <div class="card-container overflow-hidden lg:justify-center grid lg:grid-cols-3 sm:grid-cols-1 w-screen justify-center mt-6 gap-y-10 gap-x-24 ">
           <app-item-card (click)="openDetails(item, $event)" *ngFor="let item of items" (toCart)="addToCart(item)" [item]="item"></app-item-card>
     </div>
   </div>
