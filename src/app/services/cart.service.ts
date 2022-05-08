@@ -11,7 +11,6 @@ export class CartService {
   }
   saveOrder(order: Order): Promise<void> {
     console.log(order);
-    order.items
     return this.afs.collection(this.collectionName).doc(this.afs.createId()).set(Object.assign({}, order)).then(r => {
       console.log("order saved", r);
     });
